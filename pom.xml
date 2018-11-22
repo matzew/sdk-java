@@ -54,6 +54,7 @@
     <modules>
         <module>api</module>
         <module>http/vertx</module>
+        <module>http/jaxrs</module>
     </modules>
 
 </project>
