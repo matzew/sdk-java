@@ -53,4 +53,20 @@ public class CustomEventTypesTest {
         assertThat(event.getData().get().getSpec().getCapacity().get("storage")).isEqualTo("2Gi");
         assertThat(event.getData().get().getSpec().getAccessModes()).containsExactly("ReadWriteMany");
     }
+
+    @Test
+    public void bloadedString() throws IOException {
+
+        final String raw = "{\"payload\":\"{\\\"signal\\\":2,\\\"data\\\":{\\\"brokerage\\\":{\\\"broker\\\":{\\\"id\\\":\\\"BMS-USB-G-JACE\\\",\\\"meta\\\":{\\\"protocol\\\":\\\"BACNET\\\",\\\"building\\\":\\\"Urban Sciences Building\\\",\\\"buildingFloor\\\":\\\"G\\\"}},\\\"id\\\":\\\"Drivers.GF_Event_Space_Electricity_Meters.GF_ES_Mechcanical_Plant.points.GF_ES_CHW_Pump_Current\\\",\\\"meta\\\":{}},\\\"entity\\\":{\\\"name\\\":\\\"Urban Sciences Building: Floor G\\\",\\\"meta\\\":{\\\"building\\\":\\\"Urban Sciences Building\\\",\\\"buildingFloor\\\":\\\"G\\\"}},\\\"feed\\\":{\\\"metric\\\":\\\"GF ES CHW Pump Current\\\",\\\"meta\\\":{}},\\\"timeseries\\\":{\\\"unit\\\":\\\"no units\\\",\\\"value\\\":{\\\"time\\\":\\\"2019-03-19T10:05:23.196Z\\\",\\\"timeAccuracy\\\":4.953,\\\"data\\\":0.15316040813922882,\\\"type\\\":\\\"Real\\\"}}},\\\"recipients\\\":0}\",\"schemaURL\":null,\"contentType\":null,\"specVersion\":\"0.2\",\"data\":\"{\\\"signal\\\":2,\\\"data\\\":{\\\"brokerage\\\":{\\\"broker\\\":{\\\"id\\\":\\\"BMS-USB-G-JACE\\\",\\\"meta\\\":{\\\"protocol\\\":\\\"BACNET\\\",\\\"building\\\":\\\"Urban Sciences Building\\\",\\\"buildingFloor\\\":\\\"G\\\"}},\\\"id\\\":\\\"Drivers.GF_Event_Space_Electricity_Meters.GF_ES_Mechcanical_Plant.points.GF_ES_CHW_Pump_Current\\\",\\\"meta\\\":{}},\\\"entity\\\":{\\\"name\\\":\\\"Urban Sciences Building: Floor G\\\",\\\"meta\\\":{\\\"building\\\":\\\"Urban Sciences Building\\\",\\\"buildingFloor\\\":\\\"G\\\"}},\\\"feed\\\":{\\\"metric\\\":\\\"GF ES CHW Pump Current\\\",\\\"meta\\\":{}},\\\"timeseries\\\":{\\\"unit\\\":\\\"no units\\\",\\\"value\\\":{\\\"time\\\":\\\"2019-03-19T10:05:23.196Z\\\",\\\"timeAccuracy\\\":4.953,\\\"data\\\":0.15316040813922882,\\\"type\\\":\\\"Real\\\"}}},\\\"recipients\\\":0}\",\"time\":null,\"id\":\"2f9f3459-7446-42c3-a716-991dfe6d8dc5\",\"type\":\"kafka-event\",\"extensions\":[],\"source\":\"my-topic\"}";
+
+
+        CloudEvent<?> ce = Json.decodeCloudEvent(raw);
+
+        System.out.println(ce.getData().isPresent());
+
+
+    }
+
+
+
 }
